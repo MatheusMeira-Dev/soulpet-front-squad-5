@@ -6,7 +6,7 @@ import { Clientes } from "./pages/Clientes/Clientes";
 import { EditaCliente } from "./pages/EditaCliente/EditaCliente";
 import { Pets } from "./pages/Pets/Pets";
 import { PetsInfo } from "./pages/PetsInfo/PetsInfo";
-import { Produtos } from "./pages/Produtos/Produtos";
+import { Produtos } from "./pages/Produtos/Produtos"; 
 
 function App() {
   return (
