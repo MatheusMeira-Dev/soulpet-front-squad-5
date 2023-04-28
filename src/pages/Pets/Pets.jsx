@@ -1,12 +1,13 @@
 import axios from "axios";
+import "./Pets.css"
 import { useEffect, useState } from "react";
-import { Table, Button, Modal } from "react-bootstrap";
+import { Table, Button, Modal, Pagination } from "react-bootstrap";
 import { Loader } from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export function Pets() {
-  const [pets, setPets] = useState(null);
+  const [pets, setPets] = useState([]);
   const [petId, setPetId] = useState(null);
   const [show, setShow] = useState(null);
 
@@ -24,6 +25,28 @@ export function Pets() {
         console.log(error);
       });
   }
+
+  // Pagination pets
+  const [ petsPerPage, setPetPerPage ] = useState(10);
+  const [ currentPage, setCurrentPage ] = useState(0);
+  const startIndex = currentPage * petsPerPage;
+  const endIndex = startIndex + petsPerPage;
+  const currentIndex = pets.slice(startIndex, endIndex)
+  const pages = Math.ceil( pets.length / petsPerPage)
+
+  function prev() {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  function next() {
+    if (currentPage < pages - 1) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
+  // Pagination pets
+  console.log(pages)
 
   const handleClose = () => {
     setPetId(null);
@@ -76,7 +99,7 @@ export function Pets() {
             </tr>
           </thead>
           <tbody>
-            {pets.map((pet) => {
+            {currentIndex.map((pet) => {
               return (
                 <tr key={pet.id}>
                   <td>{pet.nome}</td>
@@ -100,6 +123,16 @@ export function Pets() {
           </tbody>
         </Table>
       )}
+      <Pagination className="d-flex justify-content-center">
+        <Button className="button" variant="none" onClick={prev}><Pagination.Prev /></Button>
+        <Pagination.Item>{1}</Pagination.Item>
+        <Pagination.Ellipsis />
+        <Pagination.Item className="pagination">{currentPage + 1}</Pagination.Item>
+        <Pagination.Ellipsis />
+      <Pagination.Item>{pages}</Pagination.Item>
+        <Button className="button" variant="none" onClick={next}><Pagination.Next /></Button>      
+      </Pagination>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmação</Modal.Title>
