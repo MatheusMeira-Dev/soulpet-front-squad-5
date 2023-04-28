@@ -27,25 +27,32 @@ export function Pets() {
 
   const handleClose = () => {
     setPetId(null);
-    setShow(false)
-};
-const handleShow = (id) => {
+    setShow(false);
+  };
+  const handleShow = (id) => {
     setPetId(id);
-    setShow(true)
-};
+    setShow(true);
+  };
 
-function onDelete() {
-  axios.delete(`http://localhost:3001/pets/${petId}`)
-      .then(response => {
-          toast.success(response.data.message, { position: "bottom-right", duration: 2000 });
-          initializeTable();
+  function onDelete() {
+    axios
+      .delete(`http://localhost:3001/pets/${petId}`)
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: "bottom-right",
+          duration: 2000,
+        });
+        initializeTable();
       })
-      .catch(error => {
-          console.log(error);
-          toast.error(error.response.data.message, { position: "bottom-right", duration: 2000 });
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.message, {
+          position: "bottom-right",
+          duration: 2000,
+        });
       });
-  handleClose();
-}
+    handleClose();
+  }
 
   return (
     <div className="pets container">
@@ -64,7 +71,7 @@ function onDelete() {
               <th>Nome</th>
               <th>tipo</th>
               <th>porte</th>
-              <th>dataNasc</th>
+              <th>data de Nascimento</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -80,7 +87,7 @@ function onDelete() {
                     <Button onClick={() => handleShow(pet.id)}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
-                    <Button>
+                    <Button as={Link} to={`/pet/editar/${pet.id}`}>
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
                     <Button as={Link} to={`/petsinfo/${pet.id}`}>
@@ -93,20 +100,20 @@ function onDelete() {
           </tbody>
         </Table>
       )}
-                  <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Confirmação</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Tem certeza que deseja excluir o Pet?</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" onClick={handleClose}>
-                        Cancelar
-                    </Button>
-                    <Button variant="primary" onClick={onDelete}>
-                        Excluir
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmação</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja excluir o Pet?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={onDelete}>
+            Excluir
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
