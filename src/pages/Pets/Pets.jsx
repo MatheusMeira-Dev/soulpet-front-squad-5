@@ -50,7 +50,7 @@ function onDelete() {
   return (
     <div className="pets container">
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Clientes</h1>
+        <h1>Pets</h1>
         <Button>
           <i className="bi bi-plus-lg me-2"></i> Pet
         </Button>
@@ -97,7 +97,7 @@ function onDelete() {
                 <Modal.Header closeButton>
                     <Modal.Title>Confirmação</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Tem certeza que deseja excluir o cliente?</Modal.Body>
+                <Modal.Body>Tem certeza que deseja excluir o Pet?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={handleClose}>
                         Cancelar
