@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Modal } from "react-bootstrap";
 import { Loader } from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 export function Pets() {
   const [pets, setPets] = useState(null);
+  const [petId, setPetId] = useState(null);
+  const [show, setShow] = useState(null);
 
   useEffect(() => {
     initializeTable();
@@ -21,6 +24,28 @@ export function Pets() {
         console.log(error);
       });
   }
+
+  const handleClose = () => {
+    setPetId(null);
+    setShow(false)
+};
+const handleShow = (id) => {
+    setPetId(id);
+    setShow(true)
+};
+
+function onDelete() {
+  axios.delete(`http://localhost:3001/pets/${petId}`)
+      .then(response => {
+          toast.success(response.data.message, { position: "bottom-right", duration: 2000 });
+          initializeTable();
+      })
+      .catch(error => {
+          console.log(error);
+          toast.error(error.response.data.message, { position: "bottom-right", duration: 2000 });
+      });
+  handleClose();
+}
 
   return (
     <div className="pets container">
@@ -52,7 +77,7 @@ export function Pets() {
                   <td>{pet.porte}</td>
                   <td>{pet.dataNasc}</td>
                   <td className="d-flex justify-content-center gap-2">
-                    <Button>
+                    <Button onClick={() => handleShow(pet.id)}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
                     <Button>
@@ -68,6 +93,20 @@ export function Pets() {
           </tbody>
         </Table>
       )}
+                  <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmação</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Tem certeza que deseja excluir o cliente?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={onDelete}>
+                        Excluir
+                    </Button>
+                </Modal.Footer>
+            </Modal>
     </div>
   );
 }

@@ -34,11 +34,6 @@ export function PetsInfo() {
           
       }
 
-     
-
-      
-
-
 
     return (
         <div className="petsinfo container">
