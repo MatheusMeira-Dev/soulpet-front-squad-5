@@ -51,7 +51,7 @@ export function Produtos() {
                                 return (
                                     <tr key={produtos.id}>
                                         <td>{produtos.nome}</td>
-                                        <td style={{ color: 'forestgreen', fontSize: ' 18px' }} >R$ {produtos.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                        <td style={{ color: 'forestgreen', fontSize: ' 18px' }}>R$ {produtos.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                                         <td>{produtos.categoria}</td>
                                         <td className="d-flex gap-2">
                                             <Button  > 
