@@ -29,7 +29,7 @@ export function Produtos() {
         <div className="produtos container">
             <div className="d-flex justify-content-between align-items-center">
                 <h1>Produtos</h1>
-                <Button className="primary" as={Link} to="/">
+                <Button   as={Link} to="/">
                     <i className="bi bi-plus-lg me-2 "></i> Produtos
                 </Button>
             </div>
@@ -54,10 +54,10 @@ export function Produtos() {
                                         <td>R$ {produtos.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                                         <td>{produtos.categoria}</td>
                                         <td className="d-flex gap-2">
-                                            <Button className="primary"> 
+                                            <Button  > 
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
-                                            <Button className="primary" >
+                                            <Button   >
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
                                         </td>

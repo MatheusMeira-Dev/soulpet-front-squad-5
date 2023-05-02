@@ -51,7 +51,7 @@ export function Clientes() {
         <div className="clientes container">
             <div className="d-flex justify-content-between align-items-center">
                 <h1>Clientes</h1>
-                <Button as={Link} to="/clientes/novo">
+                <Button   as={Link} to="/clientes/novo">
                     <i className="bi bi-plus-lg me-2"></i> Cliente
                 </Button>
             </div>
@@ -76,10 +76,10 @@ export function Clientes() {
                                         <td>{cliente.email}</td>
                                         <td>{cliente.telefone}</td>
                                         <td className="d-flex gap-2">
-                                            <Button onClick={() => handleShow(cliente.id)}>
+                                            <Button   onClick={() => handleShow(cliente.id)}>
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
-                                            <Button as={Link} to={`/clientes/editar/${cliente.id}`}>
+                                            <Button   as={Link} to={`/clientes/editar/${cliente.id}`}>
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
                                         </td>
@@ -95,10 +95,10 @@ export function Clientes() {
                 </Modal.Header>
                 <Modal.Body>Tem certeza que deseja excluir o cliente?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={handleClose}>
+                    <Button   onClick={handleClose}>
                         Cancelar
                     </Button>
-                    <Button variant="primary" onClick={onDelete}>
+                    <Button   onClick={onDelete}>
                         Excluir
                     </Button>
                 </Modal.Footer>

@@ -81,7 +81,7 @@ export function Pets() {
     <div className="pets container">
       <div className="d-flex justify-content-between align-items-center">
         <h1>Pets</h1>
-        <Button>
+        <Button  >
           <i className="bi bi-plus-lg me-2"></i> Pet
         </Button>
       </div>
@@ -107,13 +107,13 @@ export function Pets() {
                   <td>{pet.porte}</td>
                   <td>{pet.dataNasc}</td>
                   <td className="d-flex justify-content-center gap-2">
-                    <Button onClick={() => handleShow(pet.id)}>
+                    <Button   onClick={() => handleShow(pet.id)}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
-                    <Button as={Link} to={`/pet/editar/${pet.id}`}>
+                    <Button   as={Link} to={`/pet/editar/${pet.id}`}>
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
-                    <Button as={Link} to={`/petsinfo/${pet.id}`}>
+                    <Button   as={Link} to={`/petsinfo/${pet.id}`}>
                       <i className="bi bi-info-lg"></i>
                     </Button>
                   </td>
@@ -139,10 +139,10 @@ export function Pets() {
         </Modal.Header>
         <Modal.Body>Tem certeza que deseja excluir o Pet?</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button   onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={onDelete}>
+          <Button   onClick={onDelete}>
             Excluir
           </Button>
         </Modal.Footer>
