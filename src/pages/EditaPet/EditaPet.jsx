@@ -59,7 +59,7 @@ export function EditaPet() {
                     {errors.dataNasc && <Form.Text className="invalid-feedback">{errors.dataNasc.message}</Form.Text>}
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button   type="submit">
                     Editar
                 </Button>
             </Form>
