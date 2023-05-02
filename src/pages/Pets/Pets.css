@@ -1,5 +1,6 @@
 .pagination {
-    border-radius: 5px !important;
+    --bs-pagination-border-radius: 0px !important;
+    
 }
 
 .button {

@@ -124,13 +124,13 @@ export function Pets() {
         </Table>
       )}
       <Pagination className="d-flex justify-content-center">
-        <Button className="button" variant="none" onClick={prev}><Pagination.Prev /></Button>
+        <Button className="button rounded-start" variant="none" onClick={prev}><Pagination.Prev /></Button>
         <Pagination.Item>{1}</Pagination.Item>
         <Pagination.Ellipsis />
         <Pagination.Item className="pagination">{currentPage + 1}</Pagination.Item>
         <Pagination.Ellipsis />
       <Pagination.Item>{pages}</Pagination.Item>
-        <Button className="button" variant="none" onClick={next}><Pagination.Next /></Button>      
+        <Button className="button rounded-end" variant="none" onClick={next}><Pagination.Next /></Button>      
       </Pagination>
 
       <Modal show={show} onHide={handleClose}>
