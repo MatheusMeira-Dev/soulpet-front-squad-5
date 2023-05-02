@@ -9,6 +9,7 @@ import { PetsInfo } from "./pages/PetsInfo/PetsInfo";
 
 import { Produtos } from "./pages/Produtos/Produtos"; 
 import { EditaPet } from "./pages/EditaPet/EditaPet";
+import { Servicos } from "./pages/Servicos/Servicos";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Root />}>
           <Route path="/" element={<Home />} />
           <Route path="/clientes" element={<Clientes />} />
+          <Route path="/servicos" element={<Servicos/>} />
           <Route path="/clientes/novo" element={<NovoCliente />} />
           <Route path="/clientes/editar/:id" element={<EditaCliente />} />
           <Route path="/pet/editar/:id" element={<EditaPet />} />
