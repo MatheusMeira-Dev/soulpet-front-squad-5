@@ -1,2 +1,11 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+.primary {
+  background-color: #a69e69;
+  border: none;
+}
+
+.primary:hover {
+  background-color:  #3B2712
+}
