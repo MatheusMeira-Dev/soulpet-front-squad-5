@@ -14,7 +14,18 @@
   --bs-btn-active-color: #fff; 
   --bs-btn-active-bg: #3B2712; 
    --bs-btn-active-border-color: #3B2712;
-
   --bs-btn-disabled-bg: #a69e69;
   --bs-btn-disabled-border-color: none;
 }
+
+.pagination {
+  --bs-pagination-border-radius: 0px !important;   
+  --bs-pagination-hover-color: #3b2712; 
+  --bs-pagination-focus-color: #3b2712;
+  --bs-pagination-active-bg: #3b2712;
+    --bs-pagination-active-border-color: #3b2712;
+}
+.page-link {
+  color: #3b2712;
+}
+
