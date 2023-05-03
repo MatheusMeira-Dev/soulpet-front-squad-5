@@ -6,12 +6,13 @@ import { Clientes } from "./pages/Clientes/Clientes";
 import { EditaCliente } from "./pages/EditaCliente/EditaCliente";
 import { Pets } from "./pages/Pets/Pets";
 import { PetsInfo } from "./pages/PetsInfo/PetsInfo";
-import { Produtos } from "./pages/Produtos/Produtos"; 
+import { Produtos } from "./pages/Produtos/Produtos";
 import { EditaPet } from "./pages/EditaPet/EditaPet";
 import { Servicos } from "./pages/Servicos/Servicos";
 import { NovoProduto } from "./pages/NovoProduto/NovoProduto";
 import { EditarProdutos } from "./pages/EditarProduto/EditarProdutos";
 import { EditarServico } from "./pages/EditarServico/EditarServico";
+import { NovoServico } from "./pages/NovoServico/NovoServico";
 
 
 function App() {
@@ -31,10 +32,10 @@ function App() {
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/produto/novo" element={<NovoProduto />} />
           <Route path="/produto/editar/:id" element={< EditarProdutos />} />
+          <Route path="/servicos/novo" element={<NovoServico />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
-}
 
 export default App;
