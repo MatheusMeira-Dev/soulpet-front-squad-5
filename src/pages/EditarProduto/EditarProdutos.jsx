@@ -45,6 +45,18 @@ export function EditarProdutos() {
     }, [id, setValue]);
     
 
+    // useEffect(() => {
+    //     axios.get(`http://localhost:3001/produtos/${id}`)
+    //         .then(response => {
+    //             const { nome, preco, descricao, desconto, dataDesconto, categoria } = response.data;
+    //             reset({  nome, preco, descricao, desconto, dataDesconto, categoria });
+    //         })
+    //         .catch(error => {
+    //             toast.error("Erro ao carregar o produto.", { position: "bottom-right", duration: 2000 });
+    //             console.log(error);
+    //         }, [id, reset]);
+    //     });
+
     return (
         <div className="container">
             <h1>Editar Produtos</h1>
