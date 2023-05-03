@@ -1,3 +1,3 @@
-.custom-select:focus option::selection {
+.react-select__option:hover {
   background-color: #3b2712 !important;
 }

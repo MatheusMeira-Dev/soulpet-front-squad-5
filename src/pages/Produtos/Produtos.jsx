@@ -24,6 +24,7 @@ export function Produtos() {
             });
     }
 
+        
 
     return (
         <div className="produtos container">
@@ -57,7 +58,7 @@ export function Produtos() {
                                             <Button  > 
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
-                                            <Button   >
+                                            <Button  as={Link}  to={`/produto/editar/${produtos.id}`}>
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
                                         </td>

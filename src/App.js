@@ -11,6 +11,7 @@ import { Produtos } from "./pages/Produtos/Produtos";
 import { EditaPet } from "./pages/EditaPet/EditaPet";
 import { Servicos } from "./pages/Servicos/Servicos";
 import { NovoProduto } from "./pages/NovoProduto/NovoProduto";
+import { EditProdutos, EditarProdutos } from "./pages/EditarProduto/EditarProdutos";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/petsinfo/:id" element={<PetsInfo />} />
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/produto/novo" element={<NovoProduto />} />
+          <Route path="/produto/editar/:id" element={< EditarProdutos />} />
         </Route>
       </Routes>
     </BrowserRouter>
