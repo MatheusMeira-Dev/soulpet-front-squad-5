@@ -45,8 +45,6 @@ export function Pets() {
       setCurrentPage(currentPage + 1);
     }
   }
-  // Pagination pets
-  console.log(pages);
 
   const handleClose = () => {
     setPetId(null);
