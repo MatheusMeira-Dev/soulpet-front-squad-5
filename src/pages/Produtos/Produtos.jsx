@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Modal, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-
+import { toast } from "react-hot-toast";
 
 export function Produtos() {
 
@@ -11,7 +11,6 @@ export function Produtos() {
     const [showModal, setShowModal] = useState(false);
     const [produtoExclusao, setProdutoExclusao] = useState(null);
     
- 
     useEffect(() => {
         initializeTable();
     }, []);
@@ -33,23 +32,15 @@ export function Produtos() {
         if (produtoExclusao) {
             axios
             .delete(`http://localhost:3001/produtos/${produtoExclusao.id}`)
-            .then(() => {
-                const newProdutos = produtos.filter(
-                    (produto) => produto.id !== produtoExclusao.id
-                );
-                setProdutos(newProdutos);
-                setProdutoExclusao(null);
-                setShowModal(false);
+            .then((response) => {
+               toast.success(response.data.menssage, {position:"bottom-left", duration:2000})
+               initializeTable()
+               setShowModal(false)
             })
             .catch((error) => {
                 console.log(error);
             });
         }}
-        
-        function handleCancelDelete() {
-        setProdutoExclusao(null);
-        setShowModal(false);
-    }
 
     return (
         <div className="produtos container">
@@ -108,13 +99,10 @@ export function Produtos() {
             Excluir
           </Button>
           <Modal.Footer className="bg-light"></Modal.Footer>
-
         </Modal.Footer>
         </Modal.Footer>
        </Modal>
-
         </div>
-        
     );
 }
 
