@@ -156,6 +156,7 @@ export function Clientes() {
                         </tbody>
                     </Table>
             }
+            
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirmação</Modal.Title>
@@ -171,5 +172,5 @@ export function Clientes() {
                 </Modal.Footer>
             </Modal>
         </div>
-    );
+    ); 
 }
