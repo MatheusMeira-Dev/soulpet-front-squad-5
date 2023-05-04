@@ -26,82 +26,6 @@ export function Pets() {
       });
   }
 
-  function NovoPet() {
-    const [pet, setPet] = useState({
-      nome: "",
-      especie: "",
-      idade: "",
-      raca: "",
-      peso: "",
-    });
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setPet((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // lógica para enviar as informações do Pet para o servidor
-    };
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          value={pet.nome}
-          onChange={handleChange}
-          required
-        />
-         <label htmlFor="especie">Espécie:</label>
-      <input
-        type="text"
-        id="especie"
-        name="especie"
-        value={pet.especie}
-        onChange={handleChange}
-        required
-      />
-          <label htmlFor="idade">Idade:</label>
-      <input
-        type="number"
-        id="idade"
-        name="idade"
-        value={pet.idade}
-        onChange={handleChange}
-        required
-      />
-          <label htmlFor="raca">Raça:</label>
-      <input
-        type="text"
-        id="raca"
-        name="raca"
-        value={pet.raca}
-        onChange={handleChange}
-        required
-      />
-         <label htmlFor="peso">Peso:</label>
-      <input
-        type="number"
-        id="peso"
-        name="peso"
-        value={pet.peso}
-        onChange={handleChange}
-        required
-      />
-
-      <button type="submit">Salvar</button>
-    </form>
-  );
-}
-export default NovoPet;
-  
   // Pagination pets
   const [petsPerPage, setPetPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
@@ -152,7 +76,6 @@ export default NovoPet;
       });
     handleClose();
   }
-  
 
   return (
     <div className="pets container">
