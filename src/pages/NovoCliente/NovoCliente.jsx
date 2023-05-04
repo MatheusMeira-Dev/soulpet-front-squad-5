@@ -76,6 +76,9 @@ export function NovoCliente() {
                 <Button   type="submit">
                     Cadastrar
                 </Button>
+                <Button className="ms-2" onClick={() => navigate("/clientes")}>
+                    Cancelar
+                </Button>
             </Form>
         </div>
     );
