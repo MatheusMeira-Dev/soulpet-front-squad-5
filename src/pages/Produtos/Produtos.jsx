@@ -97,9 +97,9 @@ export function Produtos() {
             <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Footer closeButton>
           <Modal.Title>Confirmar exclusão</Modal.Title>
-        <Modal.Body>
-          Tem certeza que deseja excluir o produto {produtoExclusao && produtoExclusao.nome}?
-        </Modal.Body>
+          <Modal.Body className="exclusao-modal-body">
+            Tem certeza que deseja excluir o produto {produtoExclusao && produtoExclusao.nome}?
+            </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Cancelar

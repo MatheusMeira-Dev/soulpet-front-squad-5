@@ -4,7 +4,7 @@ import { Home } from "./pages/Home/Home";
 import { NovoCliente } from "./pages/NovoCliente/NovoCliente";
 import { Clientes } from "./pages/Clientes/Clientes";
 import { EditaCliente } from "./pages/EditaCliente/EditaCliente";
-import { Pets } from "./pages/Pets/Pets";
+import { Pets } from "./AddPet";
 import { PetsInfo } from "./pages/PetsInfo/PetsInfo";
 import { Produtos } from "./pages/Produtos/Produtos";
 import { EditaPet } from "./pages/EditaPet/EditaPet";
