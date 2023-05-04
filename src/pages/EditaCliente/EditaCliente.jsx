@@ -86,6 +86,9 @@ export function EditaCliente() {
                 <Button   type="submit">
                     Editar
                 </Button>
+                <Button className="ms-2" onClick={() => navigate("/clientes")}>
+                    Cancelar
+                </Button>
             </Form>
         </div>
     );

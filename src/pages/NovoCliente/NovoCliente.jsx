@@ -232,8 +232,13 @@ export function NovoCliente() {
           )}
         </Form.Group>
 
-        <Button type="submit">Cadastrar</Button>
-      </Form>
-    </div>
-  );
+                <Button   type="submit">
+                    Cadastrar
+                </Button>
+                <Button className="ms-2" onClick={() => navigate("/clientes")}>
+                    Cancelar
+                </Button>
+            </Form>
+        </div>
+    );
 }
