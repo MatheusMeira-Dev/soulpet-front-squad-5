@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-
+import { toast } from "react-hot-toast";
 
 export function Produtos() {
 
     const [produtos, setProdutos] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [produtoExclusao, setProdutoExclusao] = useState(null);
     
- 
     useEffect(() => {
         initializeTable();
     }, []);
@@ -23,8 +24,23 @@ export function Produtos() {
                 console.log(error);
             });
     }
-
-        
+    function handleDeleteClick(produto) {
+        setProdutoExclusao(produto);
+        setShowModal(true);
+    }
+    function handleConfirmDelete() {
+        if (produtoExclusao) {
+            axios
+            .delete(`http://localhost:3001/produtos/${produtoExclusao.id}`)
+            .then((response) => {
+               toast.success(response.data.menssage, {position:"bottom-left", duration:2000})
+               initializeTable()
+               setShowModal(false)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }}
 
     return (
         <div className="produtos container">
@@ -55,9 +71,10 @@ export function Produtos() {
                                         <td style={{ color: 'forestgreen', fontSize: ' 18px' }}>R$ {produtos.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                                         <td>{produtos.categoria}</td>
                                         <td className="d-flex gap-2">
-                                            <Button  > 
-                                                <i className="bi bi-trash-fill"></i>
-                                            </Button>
+                                        <Button onClick={() => handleDeleteClick(produtos)}> 
+                                        <i className="bi bi-trash-fill"></i>
+                                        </Button>
+
                                             <Button  as={Link}  to={`/produto/editar/${produtos.id}`}>
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
@@ -68,7 +85,24 @@ export function Produtos() {
                         </tbody>
                     </Table>
             }
-            
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Footer closeButton>
+          <Modal.Title>Confirmar exclusão</Modal.Title>
+          <Modal.Body className="exclusao-modal-body">
+            Tem certeza que deseja excluir o produto {produtoExclusao && produtoExclusao.nome}?
+            </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={handleConfirmDelete}>
+            Excluir
+          </Button>
+          <Modal.Footer className="bg-light"></Modal.Footer>
+        </Modal.Footer>
+        </Modal.Footer>
+       </Modal>
         </div>
     );
 }
+
