@@ -8,8 +8,8 @@ import { toast } from "react-hot-toast";
 export function Produtos() {
 
     const [produtos, setProdutos] = useState(null);
-    const [showModal, setShowModal] = useState(false);
-    const [produtoExclusao, setProdutoExclusao] = useState(null);
+    const [ produtoId, setProdutoId] = useState(false);
+    const [show, setShow] = useState(null);
     
     useEffect(() => {
         initializeTable();
@@ -24,23 +24,26 @@ export function Produtos() {
                 console.log(error);
             });
     }
-    function handleDeleteClick(produto) {
-        setProdutoExclusao(produto);
-        setShowModal(true);
-    }
-    function handleConfirmDelete() {
-        if (produtoExclusao) {
-            axios
-            .delete(`http://localhost:3001/produtos/${produtoExclusao.id}`)
+    const handleClose = () => {
+        setProdutoId(null);
+        setShow(false);
+      };
+      const handleShow = (id) => {
+        setProdutoId(id);
+        setShow(true);
+      };
+
+    function onDelete() {
+            axios.delete(`http://localhost:3001/produtos/${produtoId}`)
             .then((response) => {
                toast.success(response.data.menssage, {position:"bottom-left", duration:2000})
-               initializeTable()
-               setShowModal(false)
+               initializeTable();
+               setShow(false);
             })
             .catch((error) => {
                 console.log(error);
             });
-        }}
+        }
 
     return (
         <div className="produtos container">
@@ -64,18 +67,18 @@ export function Produtos() {
                             </tr>
                         </thead>
                         <tbody>
-                            {produtos.map(produtos => {
+                            {produtos.map(produto => {
                                 return (
-                                    <tr key={produtos.id}>
-                                        <td>{produtos.nome}</td>
-                                        <td style={{ color: 'forestgreen', fontSize: ' 18px' }}>R$ {produtos.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                                        <td>{produtos.categoria}</td>
+                                    <tr key={produto.id}>
+                                        <td>{produto.nome}</td>
+                                        <td style={{ color: 'forestgreen', fontSize: ' 18px' }}>R$ {produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                        <td>{produto.categoria}</td>
                                         <td className="d-flex gap-2">
-                                        <Button onClick={() => handleDeleteClick(produtos)}> 
+                                        <Button onClick={() => handleShow(produto.id)}> 
                                         <i className="bi bi-trash-fill"></i>
                                         </Button>
 
-                                            <Button  as={Link}  to={`/produto/editar/${produtos.id}`}>
+                                            <Button  as={Link}  to={`/produto/editar/${produto.id}`}>
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
                                         </td>
@@ -85,23 +88,16 @@ export function Produtos() {
                         </tbody>
                     </Table>
             }
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Footer closeButton>
-          <Modal.Title>Confirmar exclusão</Modal.Title>
-          <Modal.Body className="exclusao-modal-body">
-            Tem certeza que deseja excluir o produto {produtoExclusao && produtoExclusao.nome}?
-            </Modal.Body>
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmação</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja excluir o Produto?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancelar
-          </Button>
-          <Button variant="danger" onClick={handleConfirmDelete}>
-            Excluir
-          </Button>
-          <Modal.Footer className="bg-light"></Modal.Footer>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={onDelete}>Excluir</Button>
         </Modal.Footer>
-        </Modal.Footer>
-       </Modal>
+      </Modal>
         </div>
     );
 }
