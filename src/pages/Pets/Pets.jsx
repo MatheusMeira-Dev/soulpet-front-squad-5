@@ -90,7 +90,7 @@ export function Pets() {
       ) : (
         <Table striped bordered hover>
           <thead>
-            <tr>
+            <tr key={pets.id}>
               <th>Nome</th>
               <th>tipo</th>
               <th>porte</th>

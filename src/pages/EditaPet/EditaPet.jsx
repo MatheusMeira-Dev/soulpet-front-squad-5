@@ -62,6 +62,9 @@ export function EditaPet() {
                 <Button   type="submit">
                     Editar
                 </Button>
+                <Button className="ms-2" onClick={() => navigate("/pets")}>
+                    Cancelar
+                </Button>
             </Form>
         </div>
     );

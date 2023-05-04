@@ -90,6 +90,9 @@ export function NovoProduto() {
                 <Button   type="submit">
                     Cadastrar
                 </Button>
+                <Button className="ms-2" onClick={() => navigate("/produtos")}>
+                    Cancelar
+                </Button>
             </Form>
         </div>
     );
