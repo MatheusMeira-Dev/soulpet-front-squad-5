@@ -56,8 +56,7 @@ export function Agendamentos() {
                     <Button onClick={() => deleteAgendamento}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
-
-                    <Button as={Link} to={`${agendamento.id}`}>
+                    <Button as={Link} to={`/agendamentos/editar/${agendamento.id}`}>
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
                   </td>
